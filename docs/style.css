@@ -162,7 +162,132 @@ nav a:hover {
 .pricing h2 {
   text-align: center;
   font-size: 2rem;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
+}
+
+/* Local Mode Banner */
+.local-mode-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+  color: #fff;
+  padding: 25px 30px;
+  border-radius: 16px;
+  max-width: 600px;
+  margin: 0 auto 40px;
+}
+
+.local-mode-icon {
+  font-size: 2.5rem;
+}
+
+.local-mode-content h3 {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.local-mode-content p {
+  font-size: 0.9rem;
+  opacity: 0.9;
+}
+
+.local-mode-price {
+  font-size: 1.8rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.credits-title {
+  text-align: center;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: var(--text);
+}
+
+.pricing-subtitle {
+  text-align: center;
+  color: var(--text-light);
+  margin-bottom: 40px;
+}
+
+.credits-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.credit-card {
+  border: 2px solid var(--border);
+  border-radius: 16px;
+  padding: 25px 20px;
+  text-align: center;
+  position: relative;
+  background: #fff;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.credit-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.credit-card.featured {
+  border-color: var(--primary);
+  box-shadow: 0 10px 40px rgba(102, 126, 234, 0.15);
+}
+
+.credit-card h3 {
+  font-size: 1.1rem;
+  margin-bottom: 15px;
+  color: var(--text);
+}
+
+.credit-amount {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary);
+  line-height: 1;
+}
+
+.credit-bonus {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  margin-top: 5px;
+}
+
+.credit-price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 15px 0 5px;
+}
+
+.credit-unit {
+  font-size: 0.8rem;
+  color: var(--text-light);
+}
+
+.credit-save {
+  font-size: 0.85rem;
+  color: var(--success);
+  font-weight: 600;
+  margin: 8px 0;
+}
+
+.credit-card .btn {
+  display: block;
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: var(--primary);
+  color: #fff;
+}
+
+.credit-card .btn:hover {
+  background: var(--primary-dark);
 }
 
 .pricing-grid {
@@ -298,6 +423,12 @@ footer a:hover {
 }
 
 /* Responsive */
+@media (max-width: 900px) {
+  .credits-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 @media (max-width: 768px) {
   .hero h1 {
     font-size: 2rem;
@@ -319,5 +450,25 @@ footer a:hover {
   .btn-outline {
     margin-left: 0;
     margin-top: 10px;
+  }
+
+  .local-mode-banner {
+    flex-direction: column;
+    text-align: center;
+    gap: 10px;
+    padding: 20px;
+  }
+
+  .local-mode-icon {
+    font-size: 2rem;
+  }
+
+  .credits-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .credit-amount {
+    font-size: 2rem;
   }
 }
