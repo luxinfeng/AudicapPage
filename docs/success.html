@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Successful - Audicap</title>
+  <meta name="description" content="Your payment was successful. Thank you for purchasing Audicap credits.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="index.html" class="logo">🎧 Audicap</a>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="refund.html">Refund</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="success-page">
+    <div class="container">
+      <div class="success-content">
+        <div class="success-icon">✓</div>
+        <h1>Payment Successful!</h1>
+        <p class="success-message">Thank you for your purchase. Your credits have been added to your account.</p>
+
+        <div class="order-details">
+          <h2>Order Details</h2>
+          <div class="detail-row">
+            <span class="detail-label">Transaction ID:</span>
+            <span class="detail-value" id="transaction-id">Loading...</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Credits Purchased:</span>
+            <span class="detail-value" id="credits-amount">Loading...</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Amount Paid:</span>
+            <span class="detail-value" id="amount-paid">Loading...</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Date:</span>
+            <span class="detail-value" id="purchase-date">Loading...</span>
+          </div>
+        </div>
+
+        <div class="next-steps">
+          <h2>What's Next?</h2>
+          <ul>
+            <li>Your credits are now available in your Audicap extension</li>
+            <li>Open the extension to start transcribing audio</li>
+            <li>Credits expire 30 days after purchase</li>
+            <li>A confirmation email has been sent to your registered email address</li>
+          </ul>
+        </div>
+
+        <div class="success-actions">
+          <a href="index.html" class="btn btn-primary">Back to Home</a>
+          <a href="mailto:support@audicap.work" class="btn btn-secondary">Contact Support</a>
+        </div>
+
+        <div class="refund-notice">
+          <p>Need a refund? Review our <a href="refund.html">Refund Policy</a> for eligibility and instructions.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="refund.html">Refund Policy</a>
+        <a href="mailto:support@audicap.work">Contact</a>
+      </div>
+      <p class="footer-copyright">© 2026 Audicap. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Parse URL parameters to display order details
+    const urlParams = new URLSearchParams(window.location.search);
+
+    document.getElementById('transaction-id').textContent = urlParams.get('transaction_id') || 'N/A';
+    document.getElementById('credits-amount').textContent = urlParams.get('credits') || 'N/A';
+    document.getElementById('amount-paid').textContent = urlParams.get('amount') || 'N/A';
+
+    const date = new Date();
+    document.getElementById('purchase-date').textContent = date.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+  </script>
+</body>
+</html>
