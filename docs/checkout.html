@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - Audicap</title>
+  <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    .container {
+      text-align: center;
+      background: white;
+      padding: 48px;
+      border-radius: 16px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+      max-width: 400px;
+    }
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 3px solid #e0e0e0;
+      border-top-color: #3b82f6;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 16px;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    h1 {
+      color: #1f2937;
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+    .status {
+      color: #6b7280;
+      font-size: 16px;
+    }
+    .error {
+      color: #ef4444;
+      background: #fef2f2;
+      padding: 16px;
+      border-radius: 8px;
+      margin-top: 16px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="spinner" id="spinner"></div>
+    <h1>Audicap</h1>
+    <p class="status" id="status">Loading checkout...</p>
+    <div id="error" class="error"></div>
+  </div>
+
+  <script>
+    // Get transaction ID from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const transactionId = urlParams.get('txn');
+
+    // Client token will be passed as URL parameter
+    const clientToken = urlParams.get('token');
+    const environment = urlParams.get('env') || 'production';
+
+    const statusEl = document.getElementById('status');
+    const errorEl = document.getElementById('error');
+    const spinnerEl = document.getElementById('spinner');
+
+    function showError(msg) {
+      spinnerEl.style.display = 'none';
+      statusEl.textContent = 'Error';
+      errorEl.textContent = msg;
+      errorEl.style.display = 'block';
+    }
+
+    if (!transactionId || !clientToken) {
+      showError('Missing transaction ID or client token');
+    } else {
+      try {
+        // Set environment
+        if (environment === 'sandbox') {
+          Paddle.Environment.set('sandbox');
+        }
+
+        // Initialize Paddle
+        Paddle.Initialize({
+          token: clientToken,
+          eventCallback: function(event) {
+            console.log('Paddle event:', event.name);
+
+            if (event.name === 'checkout.completed') {
+              window.location.href = '/success.html';
+            }
+
+            if (event.name === 'checkout.closed') {
+              statusEl.textContent = 'Checkout closed. You can close this tab.';
+              spinnerEl.style.display = 'none';
+            }
+
+            if (event.name === 'checkout.error') {
+              showError('Payment error. Please try again.');
+            }
+          }
+        });
+
+        // Open checkout
+        Paddle.Checkout.open({
+          transactionId: transactionId
+        });
+
+        statusEl.textContent = 'Please complete your payment...';
+
+      } catch (err) {
+        showError(err.message);
+      }
+    }
+  </script>
+</body>
+</html>
