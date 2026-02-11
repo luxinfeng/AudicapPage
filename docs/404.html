@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Audicap - Shared Transcription</title>
+  <meta name="description" content="View shared transcription from Audicap">
+  <link rel="stylesheet" href="/style.css">
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+  <style>
+    .share-page {
+      padding: 40px 0;
+      background: var(--bg-gray);
+      min-height: calc(100vh - 200px);
+    }
+    .share-content {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+    .share-header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .share-header h1 {
+      font-size: 1.8rem;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    .share-meta {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+    .share-meta span {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .transcription-container {
+      max-height: 60vh;
+      overflow-y: auto;
+      padding: 20px;
+      background: var(--bg-gray);
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+    .segment {
+      display: flex;
+      gap: 15px;
+      padding: 12px;
+      background: #fff;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      border-left: 3px solid var(--border);
+      transition: all 0.2s ease;
+    }
+    .segment:hover {
+      border-left-color: var(--primary);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+    .segment:last-child {
+      margin-bottom: 0;
+    }
+    .segment-time {
+      flex-shrink: 0;
+      font-size: 0.85rem;
+      color: var(--text-light);
+      font-family: 'Courier New', monospace;
+      font-weight: 500;
+      min-width: 70px;
+    }
+    .segment-text {
+      flex: 1;
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .share-actions {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .share-actions .btn {
+      padding: 12px 24px;
+    }
+    .loading-state, .error-state {
+      text-align: center;
+      padding: 60px 20px;
+    }
+    .loading-spinner {
+      width: 50px;
+      height: 50px;
+      border: 4px solid var(--border);
+      border-top-color: var(--primary);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 20px;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    .error-icon {
+      font-size: 4rem;
+      margin-bottom: 20px;
+    }
+    .error-state h2 {
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    .error-state p {
+      color: var(--text-light);
+      margin-bottom: 20px;
+    }
+    .not-found-page {
+      text-align: center;
+      padding: 80px 20px;
+    }
+    .not-found-page h1 {
+      font-size: 6rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+    .not-found-page h2 {
+      font-size: 1.5rem;
+      color: var(--text);
+      margin-bottom: 15px;
+    }
+    .not-found-page p {
+      color: var(--text-light);
+      margin-bottom: 30px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="/" class="logo">Audicap</a>
+      <nav>
+        <a href="/#features">Features</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/privacy.html">Privacy</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- Content will be injected by JavaScript -->
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="/privacy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms of Service</a>
+        <a href="/refund.html">Refund Policy</a>
+        <a href="mailto:support@audicap.work">Contact</a>
+      </div>
+      <p class="footer-copyright">© 2026 Audicap. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const API_BASE = 'https://chrome-asr-backend.nimingxiaofeng.workers.dev';
+
+    function formatTime(timestamp) {
+      const date = new Date(timestamp);
+      const hours = date.getHours().toString().padStart(2, '0');
+      const mins = date.getMinutes().toString().padStart(2, '0');
+      const secs = date.getSeconds().toString().padStart(2, '0');
+      return `${hours}:${mins}:${secs}`;
+    }
+
+    function formatDate(timestamp) {
+      return new Date(timestamp).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+    }
+
+    function showLoading() {
+      document.getElementById('main-content').innerHTML = `
+        <section class="share-page">
+          <div class="container">
+            <div class="share-content">
+              <div class="loading-state">
+                <div class="loading-spinner"></div>
+                <p>Loading transcription...</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      `;
+    }
+
+    function showError(title, message) {
+      document.getElementById('main-content').innerHTML = `
+        <section class="share-page">
+          <div class="container">
+            <div class="share-content">
+              <div class="error-state">
+                <div class="error-icon">😕</div>
+                <h2>${title}</h2>
+                <p>${message}</p>
+                <a href="/" class="btn btn-primary">Go to Homepage</a>
+              </div>
+            </div>
+          </div>
+        </section>
+      `;
+    }
+
+    function showNotFound() {
+      document.getElementById('main-content').innerHTML = `
+        <section class="share-page">
+          <div class="container">
+            <div class="not-found-page">
+              <h1>404</h1>
+              <h2>Page Not Found</h2>
+              <p>The page you're looking for doesn't exist or has been moved.</p>
+              <a href="/" class="btn btn-primary">Go to Homepage</a>
+            </div>
+          </div>
+        </section>
+      `;
+    }
+
+    function showShare(data) {
+      const segments = data.segments || [];
+      const segmentsHtml = segments.map(seg => `
+        <div class="segment">
+          <span class="segment-time">${formatTime(seg.timestamp)}</span>
+          <span class="segment-text">${escapeHtml(seg.text)}</span>
+        </div>
+      `).join('');
+
+      const fullText = segments.map(s => s.text).join(' ');
+      const wordCount = fullText.trim().split(/\s+/).filter(w => w.length > 0).length;
+
+      document.getElementById('main-content').innerHTML = `
+        <section class="share-page">
+          <div class="container">
+            <div class="share-content">
+              <div class="share-header">
+                <h1>Shared Transcription</h1>
+                <div class="share-meta">
+                  <span>📅 ${formatDate(data.createdAt)}</span>
+                  <span>📝 ${wordCount} words</span>
+                  <span>👁️ ${data.viewCount} views</span>
+                </div>
+              </div>
+              <div class="transcription-container">
+                ${segmentsHtml || '<p style="color: var(--text-light); text-align: center;">No content</p>'}
+              </div>
+              <div class="share-actions">
+                <button class="btn btn-primary" onclick="copyText()">📋 Copy Text</button>
+                <a href="/" class="btn btn-secondary">Try Audicap</a>
+              </div>
+            </div>
+          </div>
+        </section>
+      `;
+
+      window.shareData = data;
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    function copyText() {
+      if (!window.shareData) return;
+      const segments = window.shareData.segments || [];
+      const text = segments.map(s => `[${formatTime(s.timestamp)}] ${s.text}`).join('\n');
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.querySelector('.share-actions .btn-primary');
+        btn.textContent = '✓ Copied!';
+        setTimeout(() => { btn.textContent = '📋 Copy Text'; }, 2000);
+      });
+    }
+
+    async function loadShare(shareId) {
+      showLoading();
+      try {
+        const response = await fetch(`${API_BASE}/v1/share/${shareId}`);
+        if (response.status === 404) {
+          showError('Not Found', 'This shared transcription does not exist.');
+          return;
+        }
+        if (response.status === 410) {
+          showError('Expired', 'This shared transcription has expired.');
+          return;
+        }
+        if (!response.ok) {
+          throw new Error('Failed to load');
+        }
+        const data = await response.json();
+        showShare(data);
+      } catch (error) {
+        console.error('Error loading share:', error);
+        showError('Error', 'Failed to load the transcription. Please try again later.');
+      }
+    }
+
+    // Main routing logic
+    const path = window.location.pathname;
+    const shareMatch = path.match(/^\/share\/([a-zA-Z0-9]+)$/);
+
+    if (shareMatch) {
+      document.title = 'Audicap - Shared Transcription';
+      loadShare(shareMatch[1]);
+    } else {
+      showNotFound();
+    }
+  </script>
+</body>
+</html>
