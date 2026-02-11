@@ -101,10 +101,32 @@
         Paddle.Initialize({
           token: clientToken,
           eventCallback: function(event) {
-            console.log('Paddle event:', event.name);
+            console.log('Paddle event:', event.name, event.data);
 
             if (event.name === 'checkout.completed') {
-              window.location.href = '/success.html';
+              // 从事件数据中提取交易信息
+              const data = event.data;
+              const txnId = data?.transaction_id || transactionId || '';
+              const total = data?.totals?.total || '';
+              const currency = data?.currency_code || 'USD';
+              const items = data?.items || [];
+
+              // 尝试获取积分数量（从 custom_data 或 items）
+              let credits = '';
+              if (items.length > 0 && items[0].price?.custom_data?.credits) {
+                credits = items[0].price.custom_data.credits;
+              }
+
+              // 格式化金额
+              const amount = total ? `${currency} ${(parseFloat(total) / 100).toFixed(2)}` : '';
+
+              // 跳转到成功页面并传递参数
+              const params = new URLSearchParams({
+                transaction_id: txnId,
+                credits: credits,
+                amount: amount
+              });
+              window.location.href = '/success.html?' + params.toString();
             }
 
             if (event.name === 'checkout.closed') {
