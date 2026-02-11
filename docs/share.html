@@ -94,6 +94,21 @@
       color: var(--text);
       line-height: 1.6;
     }
+    .segment-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .segment-translation {
+      padding: 8px 12px;
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      border-radius: 6px;
+      border-left: 2px solid var(--primary);
+      font-size: 0.9rem;
+      color: #0369a1;
+      line-height: 1.5;
+    }
     .share-actions {
       display: flex;
       justify-content: center;
@@ -231,10 +246,16 @@
         const speakerHtml = speakerInfo
           ? `<span class="segment-speaker" style="background-color: ${speakerInfo.color}">${speakerInfo.label}</span>`
           : '';
+        const translationHtml = seg.translation
+          ? `<div class="segment-translation">${escapeHtml(seg.translation)}</div>`
+          : '';
         return `
           <div class="segment">
             <span class="segment-time">${speakerHtml}${formatTime(seg.timestamp)}</span>
-            <span class="segment-text">${escapeHtml(seg.text)}</span>
+            <div class="segment-content">
+              <span class="segment-text">${escapeHtml(seg.text)}</span>
+              ${translationHtml}
+            </div>
           </div>
         `;
       }).join('');
