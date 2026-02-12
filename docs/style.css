@@ -290,6 +290,43 @@ nav a:hover {
   background: var(--primary-dark);
 }
 
+/* Credit Rules */
+.credit-rules {
+  max-width: 600px;
+  margin: 40px auto 0;
+  background: var(--bg-gray);
+  border-radius: 12px;
+  padding: 25px 30px;
+}
+
+.credit-rules h4 {
+  font-size: 1.1rem;
+  color: var(--text);
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.credit-rules ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.credit-rules li {
+  padding: 8px 0;
+  color: var(--text-light);
+  font-size: 0.95rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.credit-rules li:last-child {
+  border-bottom: none;
+}
+
+.credit-rules li strong {
+  color: var(--text);
+}
+
 .pricing-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

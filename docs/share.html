@@ -146,6 +146,54 @@
       color: var(--text-light);
       margin-bottom: 20px;
     }
+    /* Summary styles */
+    .summary-section {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 20px;
+      border: 1px solid var(--border);
+    }
+    .summary-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .summary-header h3 {
+      font-size: 1.1rem;
+      color: var(--text);
+      margin: 0;
+    }
+    .summary-block {
+      margin-bottom: 16px;
+    }
+    .summary-block:last-child {
+      margin-bottom: 0;
+    }
+    .summary-block h4 {
+      font-size: 0.95rem;
+      color: var(--primary);
+      margin: 0 0 8px 0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .summary-block ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+    .summary-block li {
+      font-size: 0.9rem;
+      color: var(--text);
+      line-height: 1.6;
+      margin-bottom: 6px;
+    }
+    .summary-block li:last-child {
+      margin-bottom: 0;
+    }
   </style>
 </head>
 <body>
@@ -263,6 +311,55 @@
       const fullText = segments.map(s => s.text).join(' ');
       const wordCount = fullText.trim().split(/\s+/).filter(w => w.length > 0).length;
 
+      // 生成总结 HTML
+      let summaryHtml = '';
+      if (data.summary) {
+        const { keyPoints, actionItems, keyDecisions } = data.summary;
+        const hasContent = (keyPoints && keyPoints.length > 0) ||
+                          (actionItems && actionItems.length > 0) ||
+                          (keyDecisions && keyDecisions.length > 0);
+
+        if (hasContent) {
+          let blocksHtml = '';
+
+          if (keyPoints && keyPoints.length > 0) {
+            blocksHtml += `
+              <div class="summary-block">
+                <h4>💡 Key Points</h4>
+                <ul>${keyPoints.map(p => `<li>${escapeHtml(p)}</li>`).join('')}</ul>
+              </div>
+            `;
+          }
+
+          if (actionItems && actionItems.length > 0) {
+            blocksHtml += `
+              <div class="summary-block">
+                <h4>✅ Action Items</h4>
+                <ul>${actionItems.map(p => `<li>${escapeHtml(p)}</li>`).join('')}</ul>
+              </div>
+            `;
+          }
+
+          if (keyDecisions && keyDecisions.length > 0) {
+            blocksHtml += `
+              <div class="summary-block">
+                <h4>🎯 Key Decisions</h4>
+                <ul>${keyDecisions.map(p => `<li>${escapeHtml(p)}</li>`).join('')}</ul>
+              </div>
+            `;
+          }
+
+          summaryHtml = `
+            <div class="summary-section">
+              <div class="summary-header">
+                <h3>📊 Summary</h3>
+              </div>
+              ${blocksHtml}
+            </div>
+          `;
+        }
+      }
+
       document.querySelector('.share-content').innerHTML = `
         <div class="share-header">
           <h1>Shared Transcription</h1>
@@ -272,6 +369,7 @@
             <span>👁️ ${data.viewCount} views</span>
           </div>
         </div>
+        ${summaryHtml}
         <div class="transcription-container">
           ${segmentsHtml || '<p style="color: var(--text-light); text-align: center;">No content</p>'}
         </div>
