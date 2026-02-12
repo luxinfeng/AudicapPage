@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>OG Image Generator</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #f0f0f0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    }
+    .og-image {
+      width: 1200px;
+      height: 630px;
+      background: linear-gradient(135deg, #0984E3 0%, #00CEC9 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    .og-image::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+    }
+    .og-image::after {
+      content: '';
+      position: absolute;
+      bottom: -30%;
+      left: -30%;
+      width: 80%;
+      height: 80%;
+      background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 60%);
+    }
+    .content {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+    .logo {
+      font-size: 72px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+    .logo-icon {
+      font-size: 64px;
+      margin-right: 10px;
+    }
+    .tagline {
+      font-size: 42px;
+      font-weight: 600;
+      margin-bottom: 30px;
+      opacity: 0.95;
+    }
+    .features {
+      display: flex;
+      gap: 40px;
+      font-size: 24px;
+      opacity: 0.9;
+    }
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .divider {
+      width: 6px;
+      height: 6px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.6;
+    }
+    .instructions {
+      margin-top: 40px;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      color: #333;
+      max-width: 600px;
+    }
+    .instructions h3 {
+      margin-bottom: 10px;
+    }
+    .instructions ol {
+      text-align: left;
+      padding-left: 20px;
+    }
+    .instructions li {
+      margin: 8px 0;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <div class="og-image" id="og-image">
+      <div class="content">
+        <div class="logo">
+          <span class="logo-icon">🎧</span>Audicap
+        </div>
+        <div class="tagline">Real-time Audio Transcription</div>
+        <div class="features">
+          <span class="feature">🌍 Multi-language</span>
+          <span class="divider"></span>
+          <span class="feature">🌐 Real-time Translation</span>
+          <span class="divider"></span>
+          <span class="feature">✨ AI Summary</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="instructions">
+      <h3>如何保存为 PNG：</h3>
+      <ol>
+        <li>在浏览器中打开此页面</li>
+        <li>右键点击上方的图片区域</li>
+        <li>选择"检查"或按 F12 打开开发者工具</li>
+        <li>在 Elements 面板中找到 <code>class="og-image"</code> 的 div</li>
+        <li>右键 → "Capture node screenshot"</li>
+        <li>保存为 <code>og-share.png</code></li>
+      </ol>
+      <p style="margin-top: 15px; color: #666;">
+        或者使用截图工具截取上方 1200x630 的区域。
+      </p>
+    </div>
+  </div>
+</body>
+</html>
