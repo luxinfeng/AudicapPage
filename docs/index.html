@@ -3,17 +3,103 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Audicap - Capture Every Word in Real-time</title>
-  <meta name="description" content="Audicap is a Chrome extension that captures and transcribes any audio playing in your browser in real-time. Perfect for meetings, streams, movies and more.">
+  <title>Audicap - Real-time Audio Transcription Chrome Extension | Audio to Text</title>
+  <meta name="description" content="Audicap is a Chrome extension that transcribes any browser audio to text in real-time. Live captions for meetings, streams, podcasts, and videos with AI summary, translation, and speaker identification.">
+  <meta name="keywords" content="audio transcription, real-time transcription, Chrome extension, audio to text, live captions, meeting transcription, speech to text, browser transcription, AI transcription, real-time translation, Zoom transcription, Google Meet captions">
+  <link rel="canonical" href="https://audicap.work/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://audicap.work/">
+  <meta property="og:title" content="Audicap - Real-time Audio Transcription for Chrome">
+  <meta property="og:description" content="Transcribe any browser audio to text instantly. Live captions, AI summaries, real-time translation, and speaker identification. Free to start.">
+  <meta property="og:image" content="https://audicap.work/og-share.png">
+  <meta property="og:site_name" content="Audicap">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Audicap - Real-time Audio Transcription for Chrome">
+  <meta name="twitter:description" content="Transcribe any browser audio to text instantly. Live captions, AI summaries, real-time translation, and speaker identification.">
+  <meta name="twitter:image" content="https://audicap.work/og-share.png">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Audicap",
+    "description": "Real-time audio transcription Chrome extension that converts any browser audio to text with AI summary, translation, and speaker identification.",
+    "url": "https://audicap.work",
+    "applicationCategory": "BrowserExtension",
+    "operatingSystem": "Chrome",
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Free Trial",
+        "price": "0",
+        "priceCurrency": "USD",
+        "description": "30 free credits on signup"
+      },
+      {
+        "@type": "Offer",
+        "name": "Starter",
+        "price": "2.99",
+        "priceCurrency": "USD",
+        "description": "100 credits"
+      },
+      {
+        "@type": "Offer",
+        "name": "Standard",
+        "price": "9.99",
+        "priceCurrency": "USD",
+        "description": "500 credits"
+      },
+      {
+        "@type": "Offer",
+        "name": "Pro",
+        "price": "19.99",
+        "priceCurrency": "USD",
+        "description": "1200 credits + 200 bonus"
+      },
+      {
+        "@type": "Offer",
+        "name": "Ultimate",
+        "price": "39.99",
+        "priceCurrency": "USD",
+        "description": "3000 credits + 600 bonus"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Google Analytics (GA4) - Replace GA_MEASUREMENT_ID with your actual ID -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'GA_MEASUREMENT_ID');
+  </script>
+
+  <!-- Microsoft Clarity - Replace CLARITY_PROJECT_ID with your actual ID -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window,document,"clarity","script","CLARITY_PROJECT_ID");
+  </script>
+
   <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" sizes="128x128" href="favicon-128.png">
   <link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
 </head>
 <body>
-  <header>
+  <header role="banner">
     <div class="container">
-      <a href="index.html" class="logo">🎧 Audicap</a>
-      <nav>
+      <a href="index.html" class="logo" aria-label="Audicap Home">🎧 Audicap</a>
+      <nav aria-label="Main navigation">
         <a href="#features">Features</a>
         <a href="#pricing">Pricing</a>
         <a href="privacy.html">Privacy</a>
@@ -23,11 +109,12 @@
     </div>
   </header>
 
+  <main>
   <section class="hero">
     <div class="container">
       <h1>Capture Every Word, Live</h1>
       <p>Transform any audio playing in your Chrome browser into accurate text transcriptions instantly. Perfect for live streams, meetings, movies, and more.</p>
-      <a href="#" class="btn btn-primary">Add to Chrome - It's Free</a>
+      <a href="https://chromewebstore.google.com/detail/audicap/cfalkkjbhiohkomajlelefmllnoniloo" class="btn btn-primary">Add to Chrome - It's Free</a>
       <a href="#features" class="btn btn-outline">Learn More</a>
     </div>
   </section>
@@ -105,7 +192,7 @@
           <div class="credit-price">$2.99</div>
           <div class="credit-unit">$0.0299/min</div>
           <div class="credit-save">&nbsp;</div>
-          <a href="#" class="btn btn-primary">Buy Now</a>
+          <a href="https://chromewebstore.google.com/detail/audicap/cfalkkjbhiohkomajlelefmllnoniloo" class="btn btn-primary">Buy Now</a>
         </div>
         <div class="credit-card featured">
           <span class="pricing-badge">Most Popular</span>
@@ -115,7 +202,7 @@
           <div class="credit-price">$9.99</div>
           <div class="credit-unit">$0.0200/min</div>
           <div class="credit-save">Save 33%</div>
-          <a href="#" class="btn btn-primary">Buy Now</a>
+          <a href="https://chromewebstore.google.com/detail/audicap/cfalkkjbhiohkomajlelefmllnoniloo" class="btn btn-primary">Buy Now</a>
         </div>
         <div class="credit-card">
           <h3>Pro</h3>
@@ -124,7 +211,7 @@
           <div class="credit-price">$19.99</div>
           <div class="credit-unit">$0.0143/min</div>
           <div class="credit-save">Save 52%</div>
-          <a href="#" class="btn btn-primary">Buy Now</a>
+          <a href="https://chromewebstore.google.com/detail/audicap/cfalkkjbhiohkomajlelefmllnoniloo" class="btn btn-primary">Buy Now</a>
         </div>
         <div class="credit-card">
           <h3>Ultimate</h3>
@@ -133,7 +220,7 @@
           <div class="credit-price">$39.99</div>
           <div class="credit-unit">$0.0111/min</div>
           <div class="credit-save">Save 63%</div>
-          <a href="#" class="btn btn-primary">Buy Now</a>
+          <a href="https://chromewebstore.google.com/detail/audicap/cfalkkjbhiohkomajlelefmllnoniloo" class="btn btn-primary">Buy Now</a>
         </div>
       </div>
 
@@ -152,15 +239,16 @@
     </div>
   </section>
 
-  <section style="padding: 60px 0; text-align: center; background: var(--bg-gray);">
+  <section class="cta" style="padding: 60px 0; text-align: center; background: var(--bg-gray);">
     <div class="container">
       <h2 style="margin-bottom: 20px;">Ready to Get Started?</h2>
       <p style="color: var(--text-light); margin-bottom: 30px;">Install Audicap and start capturing audio in seconds.</p>
-      <a href="#" class="btn btn-primary" style="background: var(--primary); color: #fff;">Add to Chrome - Free</a>
+      <a href="https://chromewebstore.google.com/detail/audicap/cfalkkjbhiohkomajlelefmllnoniloo" class="btn btn-primary" style="background: var(--primary); color: #fff;">Add to Chrome - Free</a>
     </div>
   </section>
+  </main>
 
-  <footer>
+  <footer role="contentinfo">
     <div class="container">
       <div class="footer-links">
         <a href="privacy.html">Privacy Policy</a>
