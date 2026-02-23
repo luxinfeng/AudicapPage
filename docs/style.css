@@ -85,6 +85,12 @@ nav a:hover {
   margin: 0 auto 30px;
 }
 
+.hero-trial-note {
+  margin: 20px auto 0;
+  font-size: 0.95rem;
+  opacity: 0.85;
+}
+
 .btn {
   display: inline-block;
   padding: 14px 32px;
