@@ -82,276 +82,231 @@
   <link rel="icon" type="image/png" sizes="48x48" href="favicon-48.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon.png">
 </head>
-<body>
-  <header role="banner">
-    <div class="container">
-      <a href="index.html" class="logo" aria-label="Audicap Home">🎧 Audicap</a>
-      <nav aria-label="Main navigation">
-        <a href="#workflow">How It Works</a>
-        <a href="#features">For Learners</a>
+<body class="home-page">
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <a href="index.html" class="brand" aria-label="Audicap home">
+        <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <span class="brand-name">Audicap<small>Learning capture</small></span>
+      </a>
+      <nav class="primary-nav" aria-label="Main navigation">
+        <a href="#workflow">How it works</a>
+        <a href="#use-cases">Use cases</a>
         <a href="#pricing">Pricing</a>
-        <a href="blog/">Blog</a>
-        <a href="use-cases/">Use Cases</a>
-        <a href="alternatives/">Alternatives</a>
-        <a href="privacy.html">Privacy</a>
-        <a href="terms.html">Terms</a>
-        <a href="refund.html">Refund</a>
+        <a href="blog/">Guides</a>
       </nav>
+      <a class="header-cta" href="https://chromewebstore.google.com/detail/audicap/cfalkkjbhiohkomajlelefmllnoniloo?utm_source=audicap_website&amp;utm_medium=seo&amp;utm_campaign=home_header">Add to Chrome <span aria-hidden="true">↗</span></a>
     </div>
   </header>
 
   <main>
-  <section class="hero">
-    <div class="container hero-layout">
-      <div class="hero-copy">
-        <div class="hero-eyebrow">Professional learning, captured live</div>
-        <h1>Turn Every Online Course Into Knowledge You Can <span>Keep</span></h1>
-        <p>Audicap turns course and training audio in Chrome into a live transcript you can revisit after the lesson—without downloading videos, uploading files, or inviting a bot.</p>
-        <div class="hero-feature-pills" aria-label="Audicap learning benefits">
-          <span><span class="pill-icon">◉</span>Live Course Transcript</span>
-          <span><span class="pill-icon">↺</span>Saved Learning History</span>
-          <span><span class="pill-icon">✓</span>Pay As You Learn</span>
+    <section id="product" class="hero">
+      <div class="container hero-layout">
+        <div class="hero-copy">
+          <div class="hero-eyebrow"><span></span>Live transcription for professional learning</div>
+          <h1>Turn online courses into transcripts you can actually use.</h1>
+          <p class="hero-lede">Audicap captures course and training audio playing in Chrome, turns it into a live transcript, and keeps it ready for notes, review, and export.</p>
+          <div class="hero-actions">
+            <a href="https://chromewebstore.google.com/detail/audicap/cfalkkjbhiohkomajlelefmllnoniloo?utm_source=audicap_website&amp;utm_medium=seo&amp;utm_campaign=home_professional_learning" class="btn btn-primary">Add to Chrome — free <span aria-hidden="true">→</span></a>
+            <a href="#workflow" class="text-link">See how it works <span aria-hidden="true">↓</span></a>
+          </div>
+          <ul class="hero-assurance" aria-label="Getting started details">
+            <li>No card required</li>
+            <li>No monthly subscription</li>
+            <li>No meeting bot</li>
+          </ul>
+          <div class="hero-platforms">
+            <span>Works with learning in regular Chrome tabs</span>
+            <div><b>Coursera</b><b>Udemy</b><b>Canvas</b><b>edX</b><b>Training portals</b></div>
+          </div>
         </div>
-        <div class="hero-actions">
-          <a href="https://chromewebstore.google.com/detail/audicap/cfalkkjbhiohkomajlelefmllnoniloo?utm_source=audicap_website&amp;utm_medium=seo&amp;utm_campaign=home_professional_learning" class="btn btn-primary">Start Your First Transcript — Free</a>
-          <a href="#workflow" class="btn btn-outline">See the Learning Workflow</a>
-        </div>
-        <p class="hero-trial-note">30 free minutes on signup &nbsp;·&nbsp; No monthly subscription &nbsp;·&nbsp; Works in regular Chrome tabs</p>
-      </div>
-      <div class="hero-visual" aria-hidden="true">
-        <div class="hero-glow hero-glow-one"></div>
-        <div class="hero-glow hero-glow-two"></div>
-        <div class="soundwave">
-          <span class="wave-bar"></span><span class="wave-bar"></span><span class="wave-bar"></span><span class="wave-bar"></span><span class="wave-bar"></span><span class="wave-bar"></span><span class="wave-bar"></span><span class="wave-bar"></span><span class="wave-bar"></span>
-        </div>
-        <div class="transcript-card">
-          <div class="transcript-card-header"><span></span><span></span><span></span></div>
-          <div class="course-meta"><span>PROFESSIONAL COURSE</span><span>LIVE</span></div>
-          <div class="transcript-title">Clinical Teaching · Module 2</div>
-          <div class="transcript-row long"></div>
-          <div class="transcript-row medium"></div>
-          <div class="transcript-row short"></div>
-          <div class="summary-chip">Saved to learning history</div>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <section class="learning-audiences" aria-labelledby="audience-title">
-    <div class="container">
-      <div class="section-kicker">Built for serious learning</div>
-      <h2 id="audience-title">One extension for the courses that move your career forward.</h2>
-      <p class="section-lede">Use Audicap wherever your lessons already live. Keep listening in the original course player while a readable transcript forms beside it.</p>
-      <div class="platform-list" aria-label="Example learning platforms">
-        <span>Coursera</span>
-        <span>Udemy</span>
-        <span>Canvas</span>
-        <span>edX</span>
-        <span>HubSpot Academy</span>
-        <span>Edpuzzle</span>
-        <span>Training Portals</span>
-      </div>
-    </div>
-  </section>
-
-  <section id="workflow" class="learning-workflow">
-    <div class="container">
-      <div class="section-kicker">From lesson to learning record</div>
-      <h2>Stay with the lesson. Audicap keeps the words.</h2>
-      <p class="section-lede">No recording setup and no post-class upload ritual. Start the course, start Audicap, and leave with a transcript you can return to.</p>
-      <div class="workflow-grid">
-        <article class="workflow-step">
-          <span class="step-number">01</span>
-          <div class="step-mark">▶</div>
-          <h3>Play your course</h3>
-          <p>Open a lecture, certification module, webinar, or training portal in a regular Chrome tab.</p>
-        </article>
-        <article class="workflow-step">
-          <span class="step-number">02</span>
-          <div class="step-mark">≋</div>
-          <h3>Read along live</h3>
-          <p>See the lesson become text while it plays, without leaving the course or inviting a bot.</p>
-        </article>
-        <article class="workflow-step">
-          <span class="step-number">03</span>
-          <div class="step-mark">⌑</div>
-          <h3>Keep the transcript</h3>
-          <p>Return to recent learning history instead of scrubbing through the video to find one idea.</p>
-        </article>
-        <article class="workflow-step">
-          <span class="step-number">04</span>
-          <div class="step-mark">↗</div>
-          <h3>Use what you learned</h3>
-          <p>Summarize, copy, export, or share the material when it is time to study or apply it.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section id="features" class="features">
-    <div class="container">
-      <div class="section-kicker">Designed around the learning task</div>
-      <h2>Everything between “play” and “I understand.”</h2>
-      <div class="feature-grid">
-        <div class="feature-card">
-          <div class="feature-icon">◉</div>
-          <h3>Capture Long Lessons Live</h3>
-          <p>Follow lectures and training sessions as they happen, even when the platform does not provide a useful transcript.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">▣</div>
-          <h3>Stay Inside the Course</h3>
-          <p>No video downloads, file conversions, or upload queues. Audicap works with audio already playing in Chrome.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">↺</div>
-          <h3>Return to Recent Lessons</h3>
-          <p>Keep recent transcripts connected to their source so important explanations do not disappear when the lesson ends.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">⌘</div>
-          <h3>Turn Words Into Notes</h3>
-          <p>Generate a summary when you need one, or keep the full transcript for detailed review and reference.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">文</div>
-          <h3>Learn Across Languages</h3>
-          <p>Use multilingual transcription and optional live translation when professional knowledge is not available in your first language.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">⇩</div>
-          <h3>Take Learning With You</h3>
-          <p>Copy, export, or securely share a transcript when the next step happens outside the course platform.</p>
+        <div class="product-stage" aria-label="Illustrative preview of the Audicap live course transcription interface">
+          <div class="product-window">
+            <div class="window-bar">
+              <div class="window-controls" aria-hidden="true"><i></i><i></i><i></i></div>
+              <div class="window-address">Audicap · Live learning capture</div>
+              <span class="window-secure">Connected</span>
+            </div>
+            <div class="capture-header">
+              <div>
+                <span class="interface-label">PROFESSIONAL COURSE</span>
+                <h2>Clinical Communication · Module 4</h2>
+              </div>
+              <span class="live-status"><i></i> Live</span>
+            </div>
+            <div class="capture-body">
+              <div class="transcript-panel">
+                <div class="panel-heading"><span>Live transcript</span><span>18:42</span></div>
+                <div class="transcript-entry is-past"><time>18:31</time><p>Before giving a recommendation, confirm the patient's understanding of the treatment plan.</p></div>
+                <div class="transcript-entry"><time>18:38</time><p>The teach-back method is not a test of the patient. It is a test of how clearly we explained the information.</p></div>
+                <div class="transcript-entry is-live"><time>18:42</time><p>Ask the patient to describe the next step in their own words<span class="typing-cursor"></span></p></div>
+              </div>
+              <aside class="learning-panel">
+                <div class="panel-heading"><span>Learning record</span><span>Saved</span></div>
+                <div class="record-item"><small>KEY TERM</small><strong>Teach-back method</strong></div>
+                <div class="record-item"><small>NOTE</small><p>Use this framework in the communication assessment.</p></div>
+                <div class="review-flag"><span>✓</span><div><strong>Review later</strong><small>Added to learning history</small></div></div>
+              </aside>
+            </div>
+            <div class="capture-footer"><span><i></i> Capturing Chrome tab audio</span><span>EN · Live transcription</span></div>
+          </div>
+          <p class="preview-caption">Illustrative interface preview · Audicap runs from the Chrome tab you select</p>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="content-hub">
-    <div class="container">
-      <div class="section-kicker">Professional learning guides</div>
-      <h2>Transcribe the course you are taking now.</h2>
-      <p class="section-lede">Practical guides for certification programs, online lectures, and career training—built around completing the lesson, not collecting more AI features.</p>
-      <div class="content-card-grid">
-        <a class="content-card" href="blog/transcribe-udemy-coursera-courses.html">
-          <span>Online courses</span>
-          <h3>How to Transcribe Udemy and Coursera Courses in Chrome</h3>
-          <p>Capture lecture audio live while keeping the original course player, chapters, and materials open.</p>
-        </a>
-        <a class="content-card" href="blog/pay-as-you-go-transcription-students.html">
-          <span>Learning budget</span>
-          <h3>Pay Only When You Have a Course to Finish</h3>
-          <p>Compare pay-as-you-go transcription with another monthly study subscription.</p>
-        </a>
-        <a class="content-card" href="blog/transcribe-youtube-video-in-chrome.html">
-          <span>Training videos</span>
-          <h3>Turn a Long Training Video Into a Transcript</h3>
-          <p>Follow technical talks, certification videos, and recorded workshops without losing the details.</p>
-        </a>
+    <section class="signal-strip" aria-label="Product principles">
+      <div class="container signal-grid">
+        <div><span>01</span><strong>Chrome tab audio</strong><small>Works where the course already plays</small></div>
+        <div><span>02</span><strong>No file workflow</strong><small>No downloading and re-uploading videos</small></div>
+        <div><span>03</span><strong>Learning history</strong><small>Return to the source and transcript</small></div>
+        <div><span>04</span><strong>Pay as you learn</strong><small>Credits instead of another subscription</small></div>
       </div>
-      <div class="content-hub-actions">
-        <a class="btn btn-primary" href="blog/">Read the guides</a>
-        <a class="btn btn-muted" href="alternatives/">Compare alternatives</a>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="pricing" class="pricing">
-    <div class="container">
-      <div class="section-kicker">Simple course-by-course pricing</div>
-      <h2>Pay for learning time, not another subscription.</h2>
-
-      <!-- Free Trial -->
-      <div class="local-mode-banner">
-        <div class="local-mode-icon">🎁</div>
-        <div class="local-mode-content">
-          <h3>Free to Start</h3>
-          <p>Sign up and get 30 free minutes instantly. Invite friends to earn more minutes after they start using Audicap.</p>
+    <section id="workflow" class="learning-workflow">
+      <div class="container">
+        <div class="section-heading split">
+          <div><span class="section-label">How it works</span><h2>From the active Chrome tab to History in four steps.</h2></div>
+          <p>This is the same control flow you will see inside Audicap. No course download or audio-file upload is required.</p>
         </div>
-        <div class="local-mode-price">30 Minutes Free</div>
-      </div>
-
-      <h3 class="credits-title">Purchase Credits</h3>
-      <p class="pricing-subtitle">1 credit = 1 minute of transcription. Credits valid for 30 days from purchase.</p>
-
-      <div class="credits-grid">
-        <div class="credit-card">
-          <h3>Starter</h3>
-          <div class="credit-amount">100</div>
-          <div class="credit-bonus">&nbsp;</div>
-          <div class="credit-price">$2.99</div>
-          <div class="credit-unit">$0.0299/min</div>
-          <div class="credit-save">&nbsp;</div>
-          <a href="https://chromewebstore.google.com/detail/audicap/cfalkkjbhiohkomajlelefmllnoniloo?utm_source=audicap_website&amp;utm_medium=seo&amp;utm_campaign=home" class="btn btn-primary">Buy Now</a>
+        <div class="workflow-grid">
+          <article class="workflow-step">
+            <span class="step-number">01</span>
+            <div class="step-rule"></div>
+            <h3>Open the course tab</h3>
+            <p>Play the lesson, certification module, lecture, or training video in a regular desktop Chrome tab.</p>
+          </article>
+          <article class="workflow-step">
+            <span class="step-number">02</span>
+            <div class="step-rule"></div>
+            <h3>Press Start Recording</h3>
+            <p>Open Audicap, sign in if prompted, and start the active tab. If Chrome requests authorization, click the Audicap toolbar icon once.</p>
+          </article>
+          <article class="workflow-step">
+            <span class="step-number">03</span>
+            <div class="step-rule"></div>
+            <h3>Follow the Live view</h3>
+            <p>Keep the course playing while transcript segments appear. Use translation, timestamps, copy, or export controls when needed.</p>
+          </article>
+          <article class="workflow-step">
+            <span class="step-number">04</span>
+            <div class="step-rule"></div>
+            <h3>Stop, then open History</h3>
+            <p>Press Stop Recording to save the session. Open it in History to review, add notes, mark it for later, share, summarize, or export.</p>
+          </article>
         </div>
-        <div class="credit-card featured">
-          <span class="pricing-badge">Most Popular</span>
-          <h3>Standard</h3>
-          <div class="credit-amount">500</div>
-          <div class="credit-bonus">&nbsp;</div>
-          <div class="credit-price">$9.99</div>
-          <div class="credit-unit">$0.0200/min</div>
-          <div class="credit-save">Save 33%</div>
-          <a href="https://chromewebstore.google.com/detail/audicap/cfalkkjbhiohkomajlelefmllnoniloo?utm_source=audicap_website&amp;utm_medium=seo&amp;utm_campaign=home" class="btn btn-primary">Buy Now</a>
-        </div>
-        <div class="credit-card">
-          <h3>Pro</h3>
-          <div class="credit-amount">1200</div>
-          <div class="credit-bonus">+200 bonus</div>
-          <div class="credit-price">$19.99</div>
-          <div class="credit-unit">$0.0143/min</div>
-          <div class="credit-save">Save 52%</div>
-          <a href="https://chromewebstore.google.com/detail/audicap/cfalkkjbhiohkomajlelefmllnoniloo?utm_source=audicap_website&amp;utm_medium=seo&amp;utm_campaign=home" class="btn btn-primary">Buy Now</a>
-        </div>
-        <div class="credit-card">
-          <h3>Ultimate</h3>
-          <div class="credit-amount">3000</div>
-          <div class="credit-bonus">+600 bonus</div>
-          <div class="credit-price">$39.99</div>
-          <div class="credit-unit">$0.0111/min</div>
-          <div class="credit-save">Save 63%</div>
-          <a href="https://chromewebstore.google.com/detail/audicap/cfalkkjbhiohkomajlelefmllnoniloo?utm_source=audicap_website&amp;utm_medium=seo&amp;utm_campaign=home" class="btn btn-primary">Buy Now</a>
+        <div class="control-grid" aria-label="Audicap workflow details">
+          <div><strong>Active Chrome tab</strong><span>Audicap captures the normal tab where audio is playing.</span></div>
+          <div><strong>Chrome authorization</strong><span>A toolbar click may be required before capture begins.</span></div>
+          <div><strong>Live controls</strong><span>Translation, timestamps, copy, export, and sharing stay visible.</span></div>
+          <div><strong>Saved after Stop</strong><span>The completed transcript becomes available in History.</span></div>
         </div>
       </div>
+    </section>
 
-      <!-- Credit Rules -->
-      <div class="credit-rules">
-        <h4>How Credits Work</h4>
-        <ul>
-          <li><strong>1 credit = 1 minute</strong> of real-time transcription</li>
-          <li><strong>30-day validity</strong> - Credits expire 30 days from purchase date</li>
-          <li><strong>FIFO consumption</strong> - Credits expiring soonest are used first</li>
-          <li><strong>Real-time translation</strong> - Included free during live transcription</li>
-          <li><strong>AI Summary</strong> - Generate once per recording, cached for future access</li>
-          <li><strong>Sharing</strong> - Share transcriptions with summaries via secure links</li>
-        </ul>
+    <section id="use-cases" class="use-case-section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-label">Where Audicap fits</span>
+          <h2>For learning where missing one explanation costs you later.</h2>
+          <p>These scenarios reflect the strongest patterns in real paid usage: repeated, information-dense learning tied to professional work.</p>
+        </div>
+        <div class="use-case-list">
+          <article class="use-case-item">
+            <span class="case-number">A</span>
+            <div class="case-copy"><small>PROFESSIONAL EDUCATION</small><h3>Long-form online courses</h3><p>Preserve technical explanations across Coursera, Udemy, Canvas, edX, and private learning portals.</p></div>
+            <ul><li>Live transcript</li><li>Source-linked history</li><li>Notes and review</li></ul>
+          </article>
+          <article class="use-case-item">
+            <span class="case-number">B</span>
+            <div class="case-copy"><small>SPECIALIST LANGUAGE</small><h3>Medical and interpreter training</h3><p>Keep dense terminology visible during continuing education, domain practice, and specialist lectures.</p></div>
+            <ul><li>Multilingual capture</li><li>Optional translation</li><li>Full transcript export</li></ul>
+          </article>
+          <article class="use-case-item">
+            <span class="case-number">C</span>
+            <div class="case-copy"><small>CAREER DEVELOPMENT</small><h3>Certification and product training</h3><p>Turn HubSpot Academy, webinars, and role-specific training into material you can reference while doing the work.</p></div>
+            <ul><li>Pay-as-you-go credits</li><li>Searchable history</li><li>Summary on demand</li></ul>
+          </article>
+        </div>
+        <div class="section-action"><a class="btn btn-secondary" href="use-cases/index.html">View all learning use cases <span>→</span></a></div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="cta">
-    <div class="container">
-      <div class="section-kicker">Your next course is already waiting</div>
-      <h2>Leave the lesson with more than a progress bar.</h2>
-      <p>Install Audicap, press play, and keep the words that move your work forward.</p>
-      <a href="https://chromewebstore.google.com/detail/audicap/cfalkkjbhiohkomajlelefmllnoniloo?utm_source=audicap_website&amp;utm_medium=seo&amp;utm_campaign=home_professional_learning" class="btn btn-primary">Start Your First Transcript — Free</a>
-    </div>
-  </section>
+    <section id="pricing" class="pricing">
+      <div class="container">
+        <div class="section-heading split pricing-heading">
+          <div><span class="section-label">Simple pricing</span><h2>Buy learning time.<br>Not another subscription.</h2></div>
+          <div class="free-start"><strong>30 minutes free</strong><p>Start without a card. Install Audicap and use the free minutes on a real lesson.</p></div>
+        </div>
+        <p class="pricing-subtitle">1 credit = 1 minute of real-time transcription. Purchased credits are valid for 30 days.</p>
+        <div class="credits-grid">
+          <article class="credit-card">
+            <div class="plan-name"><span>Starter</span><small>For one short course</small></div>
+            <div class="credit-amount">100 <small>minutes</small></div>
+            <div class="credit-price">$2.99</div>
+            <div class="credit-unit">$0.0299 per minute</div>
+            <a href="https://chromewebstore.google.com/detail/audicap/cfalkkjbhiohkomajlelefmllnoniloo?utm_source=audicap_website&amp;utm_medium=seo&amp;utm_campaign=pricing_starter" class="plan-link">Get Audicap <span>→</span></a>
+          </article>
+          <article class="credit-card featured">
+            <span class="pricing-badge">Most selected</span>
+            <div class="plan-name"><span>Standard</span><small>For an active course</small></div>
+            <div class="credit-amount">500 <small>minutes</small></div>
+            <div class="credit-price">$9.99</div>
+            <div class="credit-unit">$0.0200 per minute · Save 33%</div>
+            <a href="https://chromewebstore.google.com/detail/audicap/cfalkkjbhiohkomajlelefmllnoniloo?utm_source=audicap_website&amp;utm_medium=seo&amp;utm_campaign=pricing_standard" class="plan-link">Get Audicap <span>→</span></a>
+          </article>
+          <article class="credit-card">
+            <div class="plan-name"><span>Pro</span><small>For ongoing training</small></div>
+            <div class="credit-amount">1,400 <small>minutes</small></div>
+            <div class="credit-price">$19.99</div>
+            <div class="credit-unit">Includes 200 bonus · Save 52%</div>
+            <a href="https://chromewebstore.google.com/detail/audicap/cfalkkjbhiohkomajlelefmllnoniloo?utm_source=audicap_website&amp;utm_medium=seo&amp;utm_campaign=pricing_pro" class="plan-link">Get Audicap <span>→</span></a>
+          </article>
+          <article class="credit-card">
+            <div class="plan-name"><span>Ultimate</span><small>For intensive learning</small></div>
+            <div class="credit-amount">3,600 <small>minutes</small></div>
+            <div class="credit-price">$39.99</div>
+            <div class="credit-unit">Includes 600 bonus · Save 63%</div>
+            <a href="https://chromewebstore.google.com/detail/audicap/cfalkkjbhiohkomajlelefmllnoniloo?utm_source=audicap_website&amp;utm_medium=seo&amp;utm_campaign=pricing_ultimate" class="plan-link">Get Audicap <span>→</span></a>
+          </article>
+        </div>
+        <div class="pricing-policy">
+          <span>Included with every plan</span>
+          <ul><li>Live transcription</li><li>Real-time translation</li><li>Learning history</li><li>Transcript export</li><li>Secure sharing</li></ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq-section">
+      <div class="container faq-layout">
+        <div><span class="section-label">Questions</span><h2>Before your first lesson.</h2><p class="faq-intro">Need a policy detail? Read our <a href="privacy.html">privacy policy</a>, <a href="terms.html">terms</a>, or <a href="refund.html">refund policy</a>.</p></div>
+        <div class="faq-list">
+          <details><summary>Does Audicap replace the course player?</summary><p>No. Keep the original course open and playing in Chrome. Audicap captures the tab audio you choose and displays the transcript alongside your learning workflow.</p></details>
+          <details><summary>Do I need to download or upload the course video?</summary><p>No video download or file upload is required. Start Audicap while the lesson plays in a regular Chrome tab.</p></details>
+          <details><summary>Is Audicap a meeting bot?</summary><p>No. Audicap does not join a class or call as another participant. It works from the Chrome tab you select.</p></details>
+          <details><summary>How does pricing work?</summary><p>One credit equals one minute of real-time transcription. New accounts receive 30 free minutes, and purchased credits remain valid for 30 days.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <div class="container final-cta-inner">
+        <div><span class="section-label light">Ready when the lesson starts</span><h2>Keep the part you would otherwise replay.</h2></div>
+        <div><p>Install Audicap, open a real course, and use the first 30 minutes free.</p><a href="https://chromewebstore.google.com/detail/audicap/cfalkkjbhiohkomajlelefmllnoniloo?utm_source=audicap_website&amp;utm_medium=seo&amp;utm_campaign=home_final_cta" class="btn btn-primary">Add Audicap to Chrome <span>→</span></a></div>
+      </div>
+    </section>
   </main>
 
-  <footer role="contentinfo">
-    <div class="container">
-      <div class="footer-links">
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms of Service</a>
-        <a href="refund.html">Refund Policy</a>
-        <a href="blog/">Blog</a>
-        <a href="use-cases/">Use Cases</a>
-        <a href="alternatives/">Alternatives</a>
-        <a href="mailto:support@audicap.work">Contact</a>
-      <a href="blog/transcribe-udemy-coursera-courses.html">Transcribe Courses</a><a href="blog/transcribe-microsoft-teams-web.html">Transcribe Teams</a><a href="blog/summarize-long-youtube-videos.html">Summarize YouTube</a><a href="alternatives/fireflies-ai.html">Fireflies Alternative</a><a href="alternatives/fathom.html">Fathom Alternative</a></div>
-      <p class="footer-copyright">© 2026 Audicap. All rights reserved.</p>
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-layout">
+      <div class="footer-brand"><a href="index.html" class="brand" aria-label="Audicap home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-name">Audicap<small>Learning capture</small></span></a><p>Live transcription for professional learning in Chrome.</p></div>
+      <div class="footer-column"><strong>Product</strong><a href="#product">Overview</a><a href="#workflow">How it works</a><a href="#pricing">Pricing</a><a href="use-cases/index.html">Use cases</a></div>
+      <div class="footer-column"><strong>Resources</strong><a href="blog/">Guides</a><a href="alternatives/">Alternatives</a><a href="use-cases/professional-learning.html">Professional learning</a><a href="mailto:support@audicap.work">Contact</a></div>
+      <div class="footer-column"><strong>Company</strong><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="refund.html">Refund policy</a></div>
     </div>
+    <div class="container footer-bottom"><span>© 2026 Audicap. All rights reserved.</span><span>Built for the work of learning.</span></div>
   </footer>
 
   <!-- Google Analytics (GA4) -->
