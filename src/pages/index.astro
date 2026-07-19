@@ -87,37 +87,70 @@ import Layout from '../layouts/Layout.astro';
         </div>
       </div>
 
-      <div class="product-stage" aria-label="Illustrative preview of the Audicap live course transcription interface">
-        <div class="product-window">
-          <div class="window-bar">
-            <div class="window-controls" aria-hidden="true"><i></i><i></i><i></i></div>
-            <div class="window-address">Audicap · Live learning capture</div>
-            <span class="window-secure">Connected</span>
-          </div>
-          <div class="capture-header">
-            <div>
-              <span class="interface-label">PROFESSIONAL COURSE</span>
-              <h2>Clinical Communication · Module 4</h2>
+      <div class="product-stage" aria-label="Preview of the current Audicap Chrome extension while recording a course tab">
+        <div class="homepage-plugin-shell seo-page">
+          <div class="plugin-preview homepage-plugin-preview" role="img" aria-label="Audicap Chrome extension Live view with sample professional course transcription">
+            <div class="plugin-preview-header">
+              <strong class="plugin-preview-logo">Audicap</strong>
+              <div class="plugin-preview-header-actions">
+                <span class="plugin-referral-button">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12v9H4v-9M2 7h20v5H2zM12 7v14M12 7H7.5a2.5 2.5 0 1 1 2.1-3.85L12 7Zm0 0h4.5a2.5 2.5 0 1 0-2.1-3.85L12 7Z"></path></svg>
+                  <span>Free Minutes</span>
+                </span>
+                <span class="plugin-credits-display">
+                  <span aria-hidden="true">💎</span><strong>84</strong><small>min</small><i>+</i><i>↻</i>
+                </span>
+                <span class="plugin-settings-button" aria-hidden="true">
+                  <svg viewBox="0 0 20 20"><path d="M4.2 5.4h4.1m3.4 0h4.1M4.2 10h1.6m3.4 0h6.6M4.2 14.6h6.6m3.4 0h1.6"></path><circle cx="10" cy="5.4" r="1.5"></circle><circle cx="7.5" cy="10" r="1.5"></circle><circle cx="12.5" cy="14.6" r="1.5"></circle></svg>
+                </span>
+              </div>
             </div>
-            <span class="live-status"><i></i> Live</span>
-          </div>
-          <div class="capture-body">
-            <div class="transcript-panel">
-              <div class="panel-heading"><span>Live transcript</span><span>18:42</span></div>
-              <div class="transcript-entry is-past"><time>18:31</time><p>Before giving a recommendation, confirm the patient's understanding of the treatment plan.</p></div>
-              <div class="transcript-entry"><time>18:38</time><p>The teach-back method is not a test of the patient. It is a test of how clearly we explained the information.</p></div>
-              <div class="transcript-entry is-live"><time>18:42</time><p>Ask the patient to describe the next step in their own words<span class="typing-cursor"></span></p></div>
+
+            <div class="plugin-preview-main">
+              <div class="plugin-capture-panel">
+                <div class="plugin-capture-status">
+                  <span class="plugin-recording-dot"></span>
+                  <div class="plugin-capture-copy"><strong>Recording this tab</strong><small>Capturing this tab. 13 min used.</small></div>
+                </div>
+                <div class="plugin-capture-actions">
+                  <span class="plugin-stop-button">Stop Recording</span>
+                  <div class="plugin-recording-meta"><span></span><strong>Recording</strong><b>12:18</b><small>Used 13 min · 71 min left</small></div>
+                </div>
+              </div>
+
+              <div class="plugin-secondary-controls">
+                <div class="plugin-billing-row"><span>Balance: 84 min</span><span>1 credit = 1 minute</span><span>No subscription</span></div>
+                <div class="plugin-recognition-row"><div><small>Recognition</small><strong>Default Mode</strong></div><span>Change</span></div>
+              </div>
+
+              <div class="plugin-workspace-tabs">
+                <span class="plugin-workspace-tab active">Live</span>
+                <span class="plugin-workspace-tab">History <i class="plugin-history-count">8</i></span>
+              </div>
+
+              <div class="plugin-transcription">
+                <div class="plugin-transcription-head">
+                  <h3>Live Transcription</h3>
+                  <div class="plugin-toolbar" aria-hidden="true">
+                    <span class="plugin-tool"><svg viewBox="0 0 24 24"><path d="M4 5h9M9 3v2M10 5c-.8 4-2.9 6.4-6 8M5 8c1.2 2.2 3 3.8 5.5 5M14 19l4-9 4 9M15.5 16h5"></path></svg></span>
+                    <span class="plugin-tool active"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"></circle><path d="M12 8v4l3 2"></path></svg></span>
+                    <span class="plugin-tool"><svg viewBox="0 0 24 24"><rect height="11" rx="2" width="11" x="8" y="8"></rect><path d="M5 15H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path></svg></span>
+                    <span class="plugin-tool"><svg viewBox="0 0 24 24"><path d="M12 4v10M8 10l4 4 4-4M5 20h14"></path></svg></span>
+                    <span class="plugin-tool"><svg viewBox="0 0 24 24"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 14h10l1-14M9 7V4h6v3"></path></svg></span>
+                    <span class="plugin-tool"><svg viewBox="0 0 24 24"><path d="M10 13a4 4 0 0 0 5.7 0l2.1-2.1a4 4 0 0 0-5.7-5.7l-1.2 1.2M14 11a4 4 0 0 0-5.7 0l-2.1 2.1a4 4 0 0 0 5.7 5.7l1.2-1.2"></path></svg></span>
+                    <span class="plugin-tool"><svg viewBox="0 0 24 24"><path d="M12 3l1.4 4.1L17.5 8.5l-4.1 1.4L12 14l-1.4-4.1-4.1-1.4 4.1-1.4zM18 14l.8 2.2L21 17l-2.2.8L18 20l-.8-2.2L15 17l2.2-.8z"></path></svg></span>
+                  </div>
+                </div>
+                <div class="plugin-transcription-box">
+                  <div class="plugin-segment"><time>12:06</time><span>The teach-back method checks how clearly we explained the treatment plan.</span></div>
+                  <div class="plugin-segment partial"><time>...</time><span>Ask the patient to describe the next step in their own words.</span></div>
+                </div>
+                <div class="plugin-stats"><span>Words: <b>28</b></span><span>Characters: <b>176</b></span><span>⏱️ <b>738s</b></span><span>💎 Credits left: <b>71</b></span></div>
+              </div>
             </div>
-            <aside class="learning-panel">
-              <div class="panel-heading"><span>Learning record</span><span>Saved</span></div>
-              <div class="record-item"><small>KEY TERM</small><strong>Teach-back method</strong></div>
-              <div class="record-item"><small>NOTE</small><p>Use this framework in the communication assessment.</p></div>
-              <div class="review-flag"><span>✓</span><div><strong>Review later</strong><small>Added to learning history</small></div></div>
-            </aside>
           </div>
-          <div class="capture-footer"><span><i></i> Capturing Chrome tab audio</span><span>EN · Live transcription</span></div>
+          <p class="preview-caption">Current extension controls · Sample course content</p>
         </div>
-        <p class="preview-caption">Illustrative interface preview · Audicap runs from the Chrome tab you select</p>
       </div>
     </div>
   </section>
