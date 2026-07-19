@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Audicap Popup Preview</title>
+  <link rel="stylesheet" href="/audicap-popup-preview.css">
+  <link rel="stylesheet" href="/audicap-popup-preview-credits.css">
+  <style>
+    html { width: 100%; height: 100%; overflow: hidden; background: transparent; }
+    body { width: 600px; height: 860px; overflow: hidden; pointer-events: none; transform-origin: top left; }
+    .popup-container { min-height: 860px; }
+    .preview-icon { width: 17px; height: 17px; display: block; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+    .settings-trigger-icon circle { fill: var(--bg-panel); }
+  </style>
+</head>
+<body>
+  <div class="popup-container">
+    <header class="header">
+      <div class="header-top">
+        <h1 class="app-logo">Audicap</h1>
+        <div class="header-actions">
+          <button type="button" class="toolbar-btn" style="color:var(--brand-primary);font-size:11px;padding:4px 6px;margin-right:4px;border:1px solid var(--brand-primary);border-radius:4px;background:transparent;display:flex;align-items:center;gap:4px;width:auto;height:auto">
+            <svg class="preview-icon" viewBox="0 0 24 24"><path d="M20 12v9H4v-9M2 7h20v5H2zM12 7v14M12 7H7.5a2.5 2.5 0 1 1 2.1-3.85L12 7Zm0 0h4.5a2.5 2.5 0 1 0-2.1-3.85L12 7Z"></path></svg>
+            Free Minutes
+          </button>
+          <div class="credits-display">
+            <div class="credits-info"><span class="credits-icon">💎</span><span class="credits-balance">84</span><span class="credits-label">min</span></div>
+            <button class="credits-purchase-btn">+</button><button class="credits-refresh-btn">↻</button>
+          </div>
+          <div class="settings-menu-wrapper">
+            <button type="button" class="settings-trigger" aria-label="Settings">
+              <svg class="settings-trigger-icon" viewBox="0 0 20 20" fill="none"><path d="M4.167 5.417H8.333M11.667 5.417H15.833M4.167 10H5.833M9.167 10H15.833M4.167 14.583H10.833M14.167 14.583H15.833" stroke="currentColor" stroke-width="1.35" stroke-linecap="round"></path><circle cx="10" cy="5.417" r="1.5" stroke="currentColor" stroke-width="1.35"></circle><circle cx="7.5" cy="10" r="1.5" stroke="currentColor" stroke-width="1.35"></circle><circle cx="12.5" cy="14.583" r="1.5" stroke="currentColor" stroke-width="1.35"></circle></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="main">
+      <div class="controls">
+        <section class="capture-panel capture-panel-recording" aria-label="Capture controls">
+          <div class="capture-status-card">
+            <span class="capture-status-indicator"></span>
+            <div class="capture-status-copy"><p class="capture-status-label">Recording this tab</p><p class="capture-status-detail">Capturing this tab. 13 min used.</p></div>
+          </div>
+          <div class="capture-actions">
+            <button class="btn btn-large btn-recording">Stop Recording</button>
+            <div class="recording-indicator"><span class="recording-dot"></span><span class="recording-text">Recording</span><span class="recording-duration">12:18</span><span class="cost-indicator">Used 13 min · 71 min left</span></div>
+          </div>
+        </section>
+
+        <div class="secondary-control-stack">
+          <div class="billing-transparency billing-transparency-compact"><span>Balance: 84 min</span><span>1 credit = 1 minute</span><span>No subscription</span></div>
+          <div class="compact-control-row"><div class="compact-control-copy"><span class="compact-control-title">Recognition</span><span class="compact-control-meta">Default Mode</span></div><button class="compact-control-action">Change</button></div>
+        </div>
+      </div>
+
+      <div class="workspace-tabs" role="tablist">
+        <button class="workspace-tab active">Live</button>
+        <button class="workspace-tab">History <span class="workspace-tab-count">8</span></button>
+      </div>
+
+      <div class="transcription-section">
+        <div class="transcription-header">
+          <h3>Live Transcription</h3>
+          <div class="transcription-toolbar">
+            <button class="toolbar-btn"><svg class="preview-icon" viewBox="0 0 24 24"><path d="M4 5h9M9 3v2M10 5c-.8 4-2.9 6.4-6 8M5 8c1.2 2.2 3 3.8 5.5 5M14 19l4-9 4 9M15.5 16h5"></path></svg></button>
+            <button class="toolbar-btn active"><svg class="preview-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"></circle><path d="M12 8v4l3 2"></path></svg></button>
+            <button class="toolbar-btn toolbar-btn-icon"><svg class="preview-icon" viewBox="0 0 24 24"><rect x="8" y="8" width="11" height="11" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path></svg></button>
+            <button class="toolbar-btn toolbar-btn-icon"><svg class="preview-icon" viewBox="0 0 24 24"><path d="M12 4v10M8 10l4 4 4-4M5 20h14"></path></svg></button>
+            <button class="toolbar-btn toolbar-btn-icon"><svg class="preview-icon" viewBox="0 0 24 24"><path d="M4 7h16M10 11v6M14 11v6M6 7l1 14h10l1-14M9 7V4h6v3"></path></svg></button>
+            <button class="toolbar-btn toolbar-btn-icon"><svg class="preview-icon" viewBox="0 0 24 24"><path d="M10 13a4 4 0 0 0 5.7 0l2.1-2.1a4 4 0 0 0-5.7-5.7l-1.2 1.2M14 11a4 4 0 0 0-5.7 0l-2.1 2.1a4 4 0 0 0 5.7 5.7l1.2-1.2"></path></svg></button>
+            <button class="toolbar-btn toolbar-btn-icon"><svg class="preview-icon" viewBox="0 0 24 24"><path d="M12 3l1.4 4.1L17.5 8.5l-4.1 1.4L12 14l-1.4-4.1-4.1-1.4 4.1-1.4zM18 14l.8 2.2L21 17l-2.2.8L18 20l-.8-2.2L15 17l2.2-.8z"></path></svg></button>
+          </div>
+        </div>
+        <div class="transcription-box">
+          <div class="transcription-segments">
+            <div class="segment"><span class="segment-time">12:06</span><span class="segment-text">The teach-back method checks how clearly we explained the treatment plan.</span></div>
+            <div class="segment segment-partial"><span class="segment-time">...</span><span class="segment-text partial-text">Ask the patient to describe the next step in their own words.</span></div>
+          </div>
+        </div>
+        <div class="transcription-stats"><span class="stat-item"><span class="stat-label">Words:</span><span class="stat-value">28</span></span><span class="stat-item"><span class="stat-label">Characters:</span><span class="stat-value">176</span></span><span class="stat-item"><span class="stat-label">⏱️</span><span class="stat-value">738s</span></span><span class="stat-item credit-meter"><span class="stat-label">💎 Credits left:</span><span class="stat-value">71</span></span></div>
+      </div>
+    </main>
+  </div>
+  <footer hidden></footer>
+  <script>
+    function fitPreview() {
+      const compact = window.innerWidth < 520;
+      const sourceWidth = compact ? 400 : 600;
+      const sourceHeight = compact ? 1080 : 860;
+      document.body.style.width = `${sourceWidth}px`;
+      document.body.style.height = `${sourceHeight}px`;
+      document.querySelector('.popup-container').style.minHeight = `${sourceHeight}px`;
+      document.body.style.transform = `scale(${window.innerWidth / sourceWidth})`;
+    }
+    fitPreview();
+    window.addEventListener('resize', fitPreview);
+  </script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+.credits-display {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-app);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 4px 8px 4px 12px;
+}
+
+.credits-info {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.credits-icon {
+  font-size: 14px;
+}
+
+.credits-balance {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--primary);
+}
+
+.credits-label {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.credits-purchase-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: none;
+  background: var(--primary-soft-bg-strong);
+  color: var(--primary);
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.credits-purchase-btn:hover {
+  background: var(--primary-soft-bg);
+  transform: scale(1.05);
+}
+
+.credits-refresh-btn {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.credits-refresh-btn:hover {
+  background: var(--border-light);
+  color: var(--text-main);
+}
+
+.credits-refresh-btn:active {
+  transform: rotate(180deg);
+}
+
+.credits-refresh-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
