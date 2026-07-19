@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Audicap - Shared Transcription</title>
+  <meta name="description" content="View shared transcription from Audicap">
+  <link rel="stylesheet" href="/style.css">
+
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-04VJZMNQV9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-04VJZMNQV9');
+  </script>
+
+  <!-- Microsoft Clarity - Replace xdkqvqf653 with your actual ID -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window,document,"clarity","script","xdkqvqf653");
+  </script>
+
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+  <style>
+    .share-page {
+      padding: 40px 0;
+      background: var(--bg-gray);
+      min-height: calc(100vh - 200px);
+    }
+    .share-content {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+    .share-header {
+      text-align: center;
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+    .share-header h1 {
+      font-size: 1.8rem;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    .share-meta {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+    .share-meta span {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .transcription-container {
+      max-height: 60vh;
+      overflow-y: auto;
+      padding: 20px;
+      background: var(--bg-gray);
+      border-radius: 12px;
+      margin-bottom: 20px;
+    }
+    .segment {
+      display: flex;
+      gap: 15px;
+      padding: 12px;
+      background: #fff;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      border-left: 3px solid var(--border);
+      transition: all 0.2s ease;
+    }
+    .segment:hover {
+      border-left-color: var(--primary);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+    .segment:last-child {
+      margin-bottom: 0;
+    }
+    .segment-time {
+      flex-shrink: 0;
+      font-size: 0.85rem;
+      color: var(--text-light);
+      font-family: 'Courier New', monospace;
+      font-weight: 500;
+      min-width: 70px;
+    }
+    .segment-text {
+      flex: 1;
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .share-actions {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .share-actions .btn {
+      padding: 12px 24px;
+    }
+    .loading-state, .error-state {
+      text-align: center;
+      padding: 60px 20px;
+    }
+    .loading-spinner {
+      width: 50px;
+      height: 50px;
+      border: 4px solid var(--border);
+      border-top-color: var(--primary);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 20px;
+    }
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+    .error-icon {
+      font-size: 4rem;
+      margin-bottom: 20px;
+    }
+    .error-state h2 {
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    .error-state p {
+      color: var(--text-light);
+      margin-bottom: 20px;
+    }
+    .not-found-page {
+      text-align: center;
+      padding: 80px 20px;
+    }
+    .not-found-page h1 {
+      font-size: 6rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+    .not-found-page h2 {
+      font-size: 1.5rem;
+      color: var(--text);
+      margin-bottom: 15px;
+    }
+    .not-found-page p {
+      color: var(--text-light);
+      margin-bottom: 30px;
+    }
+    .referral-page {
+      padding: 56px 0;
+      background: var(--bg-gray);
+      min-height: calc(100vh - 200px);
+    }
+    .referral-content {
+      max-width: 820px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 16px;
+      padding: 44px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      text-align: center;
+    }
+    .referral-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(9, 132, 227, 0.1);
+      color: var(--primary);
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+    .referral-content h1 {
+      font-size: 2.4rem;
+      color: var(--text);
+      line-height: 1.15;
+      margin-bottom: 14px;
+    }
+    .referral-lead {
+      max-width: 640px;
+      margin: 0 auto 28px;
+      color: var(--text-light);
+      font-size: 1.05rem;
+    }
+    .referral-value-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin: 30px 0;
+      text-align: left;
+    }
+    .referral-value-card {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      background: var(--bg-gray);
+    }
+    .referral-value-card strong {
+      display: block;
+      color: var(--text);
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+    }
+    .referral-value-card span {
+      color: var(--text-light);
+      font-size: 0.95rem;
+    }
+    .referral-code-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin: 22px auto 30px;
+      color: var(--text-light);
+      font-size: 0.95rem;
+    }
+    .referral-code-box code {
+      padding: 7px 10px;
+      border-radius: 8px;
+      background: var(--bg-gray);
+      color: var(--primary);
+      font-weight: 700;
+    }
+    .referral-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 18px;
+    }
+    .referral-note {
+      max-width: 620px;
+      margin: 0 auto;
+      color: var(--text-light);
+      font-size: 0.9rem;
+    }
+    @media (max-width: 640px) {
+      .referral-content {
+        padding: 30px 22px;
+      }
+      .referral-content h1 {
+        font-size: 2rem;
+      }
+      .referral-value-grid {
+        grid-template-columns: 1fr;
+      }
+      .referral-code-box {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <a href="/" class="logo">Audicap</a>
+      <nav>
+        <a href="/#features">Features</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/privacy.html">Privacy</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- Content will be injected by JavaScript -->
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-links">
+        <a href="/privacy.html">Privacy Policy</a>
+        <a href="/terms.html">Terms of Service</a>
+        <a href="/refund.html">Refund Policy</a>
+        <a href="mailto:support@audicap.work">Contact</a>
+      <a href="blog/transcribe-udemy-coursera-courses.html">Transcribe Courses</a><a href="blog/transcribe-microsoft-teams-web.html">Transcribe Teams</a><a href="blog/summarize-long-youtube-videos.html">Summarize YouTube</a><a href="alternatives/fireflies-ai.html">Fireflies Alternative</a><a href="alternatives/fathom.html">Fathom Alternative</a></div>
+      <p class="footer-copyright">© 2026 Audicap. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    const API_BASE = 'https://chrome-asr-backend.nimingxiaofeng.workers.dev';
+
+    function formatTime(timestamp) {
+      const date = new Date(timestamp);
+      const hours = date.getHours().toString().padStart(2, '0');
+      const mins = date.getMinutes().toString().padStart(2, '0');
+      const secs = date.getSeconds().toString().padStart(2, '0');
+      return `${hours}:${mins}:${secs}`;
+    }
+
+    function formatDate(timestamp) {
+      return new Date(timestamp).toLocaleDateString('en-US', {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+      });
+    }
+
+    function showLoading() {
+      document.getElementById('main-content').innerHTML = `
+        <section class="share-page">
+          <div class="container">
+            <div class="share-content">
+              <div class="loading-state">
+                <div class="loading-spinner"></div>
+                <p>Loading transcription...</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      `;
+    }
+
+    function showError(title, message) {
+      document.getElementById('main-content').innerHTML = `
+        <section class="share-page">
+          <div class="container">
+            <div class="share-content">
+              <div class="error-state">
+                <div class="error-icon">😕</div>
+                <h2>${title}</h2>
+                <p>${message}</p>
+                <a href="/" class="btn btn-primary">Go to Homepage</a>
+              </div>
+            </div>
+          </div>
+        </section>
+      `;
+    }
+
+    function showNotFound() {
+      document.getElementById('main-content').innerHTML = `
+        <section class="share-page">
+          <div class="container">
+            <div class="not-found-page">
+              <h1>404</h1>
+              <h2>Page Not Found</h2>
+              <p>The page you're looking for doesn't exist or has been moved.</p>
+              <a href="/" class="btn btn-primary">Go to Homepage</a>
+            </div>
+          </div>
+        </section>
+      `;
+    }
+
+    function showShare(data) {
+      const segments = data.segments || [];
+      const segmentsHtml = segments.map(seg => `
+        <div class="segment">
+          <span class="segment-time">${formatTime(seg.timestamp)}</span>
+          <span class="segment-text">${escapeHtml(seg.text)}</span>
+        </div>
+      `).join('');
+
+      const fullText = segments.map(s => s.text).join(' ');
+      const wordCount = fullText.trim().split(/\s+/).filter(w => w.length > 0).length;
+
+      document.getElementById('main-content').innerHTML = `
+        <section class="share-page">
+          <div class="container">
+            <div class="share-content">
+              <div class="share-header">
+                <h1>Shared Transcription</h1>
+                <div class="share-meta">
+                  <span>📅 ${formatDate(data.createdAt)}</span>
+                  <span>📝 ${wordCount} words</span>
+                  <span>👁️ ${data.viewCount} views</span>
+                </div>
+              </div>
+              <div class="transcription-container">
+                ${segmentsHtml || '<p style="color: var(--text-light); text-align: center;">No content</p>'}
+              </div>
+              <div class="share-actions">
+                <button class="btn btn-primary" onclick="copyText()">📋 Copy Text</button>
+                <a href="/" class="btn btn-secondary">Try Audicap</a>
+              </div>
+            </div>
+          </div>
+        </section>
+      `;
+
+      window.shareData = data;
+    }
+
+    function isValidReferralCode(code) {
+      return /^[A-Za-z0-9_-]{4,64}$/.test(code || '');
+    }
+
+    function persistReferralCode(code) {
+      try {
+        localStorage.setItem('pending_referral_code', code);
+        sessionStorage.setItem('pending_referral_code', code);
+      } catch (error) {
+        console.warn('Unable to persist referral code:', error);
+      }
+    }
+
+    function showReferralLanding(code) {
+      persistReferralCode(code);
+      document.title = 'Audicap Referral - Give 30 Minutes, Get 30 Minutes';
+      document.getElementById('main-content').innerHTML = [
+        '<section class="referral-page">',
+        '  <div class="container">',
+        '    <div class="referral-content">',
+        '      <div class="referral-badge">Audicap Referral</div>',
+        '      <h1>Give 30 Minutes, Get 30 Minutes</h1>',
+        '      <p class="referral-lead">Install Audicap with this referral link and get 30 extra minutes on top of the standard 30 free minutes after signing in.</p>',
+        '      <div class="referral-value-grid">',
+        '        <div class="referral-value-card">',
+        '          <strong>You get 60 minutes to start</strong>',
+        '          <span>30 standard signup minutes plus 30 referral bonus minutes.</span>',
+        '        </div>',
+        '        <div class="referral-value-card">',
+        '          <strong>Your friend gets 30 minutes</strong>',
+        '          <span>After you start using Audicap, their account receives a 30 minute reward.</span>',
+        '        </div>',
+        '      </div>',
+        '      <div class="referral-code-box">',
+        '        <span>Referral code saved:</span>',
+        '        <code>' + escapeHtml(code) + '</code>',
+        '      </div>',
+        '      <div class="referral-actions">',
+        '        <a href="https://chromewebstore.google.com/detail/audicap/cfalkkjbhiohkomajlelefmllnoniloo?utm_source=audicap_website&utm_medium=seo&utm_campaign=error_404" class="btn btn-primary">Add to Chrome - Free</a>',
+        '        <a href="/" class="btn btn-secondary">Learn More</a>',
+        '      </div>',
+        '      <p class="referral-note">After installing Audicap, open the extension while this page is active and sign in with Google. Audicap will apply the saved referral code automatically.</p>',
+        '    </div>',
+        '  </div>',
+        '</section>'
+      ].join('');
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement('div');
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    function copyText() {
+      if (!window.shareData) return;
+      const segments = window.shareData.segments || [];
+      const text = segments.map(s => `[${formatTime(s.timestamp)}] ${s.text}`).join('\n');
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.querySelector('.share-actions .btn-primary');
+        btn.textContent = '✓ Copied!';
+        setTimeout(() => { btn.textContent = '📋 Copy Text'; }, 2000);
+      });
+    }
+
+    async function loadShare(shareId) {
+      showLoading();
+      try {
+        const response = await fetch(`${API_BASE}/v1/share/${shareId}`);
+        if (response.status === 404) {
+          showError('Not Found', 'This shared transcription does not exist.');
+          return;
+        }
+        if (response.status === 410) {
+          showError('Expired', 'This shared transcription has expired.');
+          return;
+        }
+        if (!response.ok) {
+          throw new Error('Failed to load');
+        }
+        const data = await response.json();
+        showShare(data);
+      } catch (error) {
+        console.error('Error loading share:', error);
+        showError('Error', 'Failed to load the transcription. Please try again later.');
+      }
+    }
+
+    // Main routing logic
+    const path = window.location.pathname;
+    const shareMatch = path.match(/^\/share\/([a-zA-Z0-9]+)$/);
+    const referralMatch = path.match(/^\/ref\/([A-Za-z0-9_-]+)$/);
+
+    if (shareMatch) {
+      document.title = 'Audicap - Shared Transcription';
+      loadShare(shareMatch[1]);
+    } else if (referralMatch && isValidReferralCode(referralMatch[1])) {
+      showReferralLanding(referralMatch[1]);
+    } else {
+      showNotFound();
+    }
+  </script>
+</body>
+</html>

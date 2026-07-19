@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0984E3"/>
+      <stop offset="100%" style="stop-color:#00CEC9"/>
+    </linearGradient>
+  </defs>
+  <!-- Headphone band -->
+  <path d="M8 28C8 17.5 14.5 10 24 10C33.5 10 40 17.5 40 28"
+        stroke="url(#grad)" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <!-- Left ear cup -->
+  <rect x="4" y="26" width="8" height="14" rx="3" fill="url(#grad)"/>
+  <!-- Right ear cup -->
+  <rect x="36" y="26" width="8" height="14" rx="3" fill="url(#grad)"/>
+</svg>
