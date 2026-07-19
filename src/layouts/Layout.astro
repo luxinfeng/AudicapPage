@@ -4,9 +4,22 @@ interface Props {
   description: string;
   canonical?: string;
   hreflangs?: { lang: string; url: string }[];
+  variant?: 'default' | 'home' | 'seo';
 }
 
-const { title, description, canonical, hreflangs = [] } = Astro.props;
+const {
+  title,
+  description,
+  canonical,
+  hreflangs = [],
+  variant = 'default'
+} = Astro.props;
+
+const usesProfessionalShell = variant === 'home' || variant === 'seo';
+const bodyClasses = {
+  'home-page': usesProfessionalShell,
+  'seo-page': variant === 'seo'
+};
 ---
 
 <!DOCTYPE html>
@@ -42,8 +55,8 @@ const { title, description, canonical, hreflangs = [] } = Astro.props;
   <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
 </head>
-<body class={Astro.url.pathname === '/' ? 'home-page' : ''}>
-  {Astro.url.pathname === '/' ? (
+<body class:list={bodyClasses}>
+  {usesProfessionalShell ? (
     <header class="site-header" role="banner">
       <div class="container header-inner">
         <a href="/" class="brand" aria-label="Audicap home">
@@ -77,7 +90,7 @@ const { title, description, canonical, hreflangs = [] } = Astro.props;
     <slot />
   </main>
 
-  {Astro.url.pathname === '/' ? (
+  {usesProfessionalShell ? (
     <footer class="site-footer" role="contentinfo">
       <div class="container footer-layout">
         <div class="footer-brand"><a href="/" class="brand" aria-label="Audicap home"><span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="brand-name">Audicap<small>Learning capture</small></span></a><p>Live transcription for professional learning in Chrome.</p></div>

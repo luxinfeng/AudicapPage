@@ -1,46 +1,34 @@
-# Astro Starter Kit: Basics
+# Audicap website
+
+Astro source for the Audicap marketing site. GitHub Pages serves the generated files in `docs/`.
+
+## Local development
+
+Do not open `docs/index.html` with a `file://` URL. The site intentionally uses root-relative assets and links such as `/style.css`, so direct file viewing cannot reproduce the deployed website.
+
+Start the Astro development server instead:
 
 ```sh
-npm create astro@latest -- --template basics
+npm run dev:background
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Then open [http://localhost:4321](http://localhost:4321).
 
-## 🚀 Project Structure
+Useful commands:
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
+```sh
+npm run dev:status
+npm run dev:stop
+npm run build
 ```
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## Editing rules
 
-## 🧞 Commands
+- Edit page templates in `src/pages/`.
+- Edit shared markup in `src/layouts/`.
+- Edit static styles and assets in `public/`.
+- Do not hand-edit generated files in `docs/`; `npm run build` replaces them.
+- Homepage pages must use `variant="home"`.
+- High-intent professional-learning landing pages must use `variant="seo"`.
 
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+The production build verifies that the homepage and six high-value SEO pages contain the body classes required by their scoped CSS.

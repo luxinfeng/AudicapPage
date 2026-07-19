@@ -7,7 +7,10 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "dev:background": "astro dev --background",
+    "dev:status": "astro dev status",
+    "dev:stop": "astro dev stop",
+    "build": "astro build && node scripts/verify-rendered-pages.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },
